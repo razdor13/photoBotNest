@@ -32,9 +32,9 @@ export const photoSessions = [
 
 Ціна: **2000₴/год**`,
       images: [
-        'https://sinst.fwdcdn.com/img/weatherImg/b/d100.jpg',
-        'https://sinst.fwdcdn.com/img/weatherImg/b/d100.jpg',
-        'https://sinst.fwdcdn.com/img/weatherImg/b/d100.jpg',
+        'https://i.ibb.co/4s0SrLb/IMG-0484.jpg',
+        'https://i.ibb.co/fdnXCpX/IMG-2642.jpg',
+        'https://i.ibb.co/V2YJFty/IMG-2666.jpg',
       ],
     },
     {
@@ -51,9 +51,9 @@ export const photoSessions = [
 
 Ціна: **1000₴ / 30 хв**`,
       images: [
-        'https://i.ibb.co/RPgBkFf/IMG-1215.jpg',
-        'https://i.ibb.co/hsG4bdS/IMG-0541.jpg',
-        'https://i.ibb.co/2yBd3hB/IMG-1214.jpg',
+        'https://i.ibb.co/TrQhDfg/IMG-2632.jpg',
+        'https://i.ibb.co/KsM750H/IMG-9173.jpg',
+        'https://i.ibb.co/hDY7vHR/IMG-0310.jpg',
       ],
     },
     {
@@ -75,4 +75,24 @@ export const photoSessions = [
         'https://i.ibb.co/2yBd3hB/IMG-1214.jpg',
       ],
     },
+    {
+      name: '❤️ Сімейна',
+      descr: `_Фотосесія для вашої вашої великою (але не обов'язково)  сім'ї :)_ 🌟
+
+**Що ви отримаєте❓**
+✅ Допомогу у підборі образу.
+✅ Допомогу у підборі референсів.
+✅ Надам поради з поведінкою в кадрі та позуванням.
+✅ Індивідуальний підхід до обробки фото.
+✅ 150 фото.
+✅ Обробка фото в продовж 3-5 днів.
+
+Ціна: **2500₴/год**`,
+      images: [
+        'https://i.ibb.co/R094F4K/IMG-6464.jpg',
+        'https://i.ibb.co/mC1Rmwb/IMG-6444.jpg',
+        'https://i.ibb.co/KxbTDdY/IMG-6456.jpg',
+      ],
+    },
   ];
+

@@ -8,9 +8,9 @@ export class TelegramService implements OnModuleInit {
 
   onModuleInit() {
     this.bot = new Bot<Context>(
-      '7362217317:AAHNYMrTZEIlMiSYtQ9xOb2B5LuakAWI-QA',
+      '7309261626:AAF3_9AnmbjifyLUrwjc2ejxV2c66Gbb0FM',
     );
-
+    
     this.bot.command('start', async (ctx) => {
       const keyboard = new Keyboard();
       for (const session of photoSessions) {
@@ -58,32 +58,28 @@ export class TelegramService implements OnModuleInit {
     this.bot.callbackQuery(/choose_location:(\d+)/, async (ctx) => {
       const locationType = ctx.match[1];
 
-      let locations: string[];
+      let locations: any;
       if (locationType === '1') {
-        // Локації для вуличних зйомок
         locations = ['Ботанічний сад ЛНУ', 'Стрийський парк', 'Будинок Вчених'];
       } else if (locationType === '2') {
-        // Локації для студійних зйомок
         locations = [
-          'photostudio.81',
-          'passage_studios',
-          'luno_studio_',
-          'esthetique_lviv',
-          `Red Pine`,
+          { name: 'photostudio.81', url: 'https://www.instagram.com/photostudio.81?igsh=cXVqam04bnYydTl6' },
+          { name: 'passage_studios', url: 'https://www.instagram.com/passage_studios?igsh=MWRpczBxZXNpYzM1eQ==' },
+          { name: 'luno_studio_', url: 'https://www.instagram.com/luno_studio_?igsh=MTNpNHJ1bTMxNWIxNA==' },
+          { name: 'esthetique_lviv', url: 'https://www.instagram.com/esthetique_lviv?igsh=MTczZDR4OTZyY3RzMA==' },
+          { name: 'Red Pine', url: 'https://www.instagram.com/redpine_photostudio?igsh=cjB5amdhdnBhaDhp' }
         ];
       }
 
-      // Створення кнопок для кожної локації
       const locationKeyboard = new InlineKeyboard();
       locations.forEach((location) => {
         if(locationType === '1') {
           locationKeyboard.text(location, `location:${location}`).row();
         }else if (locationType === '2') {
-          locationKeyboard.url(location,'https://www.instagram.com/photostudio.81/?igsh=cXVqam04bnYydTl6').row();
+          locationKeyboard.url(location.name,location.url).row();
         }
       });
 
-      // Відправлення повідомлення з кнопками для вибору локації
       await ctx.reply('Оберіть локацію:', { reply_markup: locationKeyboard });
     });
     this.bot.callbackQuery(/location:(.*)/, async (ctx) => {
@@ -95,7 +91,7 @@ export class TelegramService implements OnModuleInit {
             caption: 'Ботанічний сад Львівського національного університету імені Івана Франка',
             parse_mode: 'Markdown',
           });
-          await ctx.replyWithLocation(49.83270528787713, 24.031263115091303); //ботан сад
+          await ctx.replyWithLocation(49.83270528787713, 24.031263115091303); 
           
           break;
         case 'Стрийський парк':
@@ -103,7 +99,7 @@ export class TelegramService implements OnModuleInit {
             caption: 'Стрийський парк',
             parse_mode: 'Markdown',
           });
-          await ctx.replyWithLocation(49.8230219, 24.024981); //стрий парк
+          await ctx.replyWithLocation(49.8230219, 24.024981); 
           break;
         case 'Будинок Вчених':
           await ctx.replyWithPhoto('https://inside-ua.com/files/originals/budinok-vchenih-3.webp', {
@@ -120,10 +116,9 @@ export class TelegramService implements OnModuleInit {
         .text('🌍 Обрати локацію по місту', `choose_location:1`)
         .text('🏘 Обрати студію', `choose_location:2`);
 
-      await ctx.reply('Оберіть наступну локацію:', {
+      await ctx.reply('Оберіть наступну локацію що вас цікавить:', {
         reply_markup: inlineKeyboard,
       });
-      //вчених
       
       
     });
