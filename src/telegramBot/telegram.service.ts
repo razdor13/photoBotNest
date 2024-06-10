@@ -64,9 +64,15 @@ export class TelegramService implements OnModuleInit {
     const locations = locationType === '1' ? cityLocations : studioLocations;
 
     const locationKeyboard = new InlineKeyboard();
-    locations.forEach(location => {
-      locationKeyboard.text(location.name, `location:${location.name}`).row();
-    });
+    if (locationType === '1') {
+      locations.forEach(location => {
+        locationKeyboard.text(location.name, `location:${location.name}`).row();
+      });
+    } else {
+      locations.forEach(location => {
+        locationKeyboard.url(location.name, location.url).row();
+      });
+    }
 
     await ctx.reply('Оберіть локацію:', { reply_markup: locationKeyboard });
   }
@@ -85,8 +91,6 @@ export class TelegramService implements OnModuleInit {
 
     if (location.latitude && location.longitude) {
       await ctx.replyWithLocation(location.latitude, location.longitude);
-    } else if (location.url) {
-      await ctx.reply(`Перейдіть за посиланням, щоб дізнатися більше про ${location.name}: ${location.url}`);
     }
 
     const inlineKeyboard = new InlineKeyboard()

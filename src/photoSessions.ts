@@ -163,12 +163,7 @@ export  const studioLocations: Location[] = [
     { name: 'Red Pine', url: 'https://www.instagram.com/redpine_photostudio?igsh=cjB5amdhdnBhaDhp' },
   ];
 
-  interface PhotoSession {
-    name: string;
-    descr: string;
-    images: string[];
-  }
-  
+
   interface Location {
     name: string;
     url?: string;
@@ -176,4 +171,3 @@ export  const studioLocations: Location[] = [
     latitude?: number;
     longitude?: number;
   }
-  
