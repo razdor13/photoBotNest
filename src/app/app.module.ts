@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TelegramModule } from '../telegramBot/telegram.module';
-
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [
-    TelegramModule
+  imports: [TelegramModule,
+    ConfigModule.forRoot({
+      isGlobal: true, 
+      envFilePath: '.env', 
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

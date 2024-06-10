@@ -1,14 +1,16 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Bot, Context, Keyboard, InlineKeyboard } from 'grammy';
 import { photoSessions } from '../photoSessions';
-
+import { ConfigService } from '@nestjs/config'; 
 @Injectable()
 export class TelegramService implements OnModuleInit {
   private bot: Bot<Context>;
 
+  constructor(private configService : ConfigService) {}
   onModuleInit() {
+    const telegramToken = this.configService.get<string>('API_TG_KEY');
     this.bot = new Bot<Context>(
-      '7309261626:AAF3_9AnmbjifyLUrwjc2ejxV2c66Gbb0FM',
+      telegramToken
     );
     
     this.bot.command('start', async (ctx) => {
