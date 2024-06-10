@@ -9,6 +9,7 @@ export class TelegramService implements OnModuleInit {
   constructor(private configService : ConfigService) {}
   onModuleInit() {
     const telegramToken = this.configService.get<string>('API_TG_KEY');
+    console.log(telegramToken)
     this.bot = new Bot<Context>(
       telegramToken
     );
